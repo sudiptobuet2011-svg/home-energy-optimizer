@@ -65,22 +65,22 @@ class Battery:
             print(f"soc_initial_kwh: {cls.SAVED_VALUES['soc_initial_kwh']} kWh")
             print(f"efficiency: {cls.SAVED_VALUES['efficiency'] * 100}%")
             return cls(**cls.SAVED_VALUES)
-        else:
-            capacity_kwh = cls._get_positive_float("Battery capacity (kWh): ")
-            max_charge_power_kw = cls._get_positive_float("Max charge power (kW): ")
-            max_discharge_power_kw = cls._get_positive_float("Max discharge power (kW): ")
 
-            while True:
-                efficiency = cls._get_positive_float("Battery efficiency (0-1): ")
-                if efficiency <= 1:
-                    break
-                print("Efficiency must be less than or equal to 1.")
+        capacity_kwh = cls._get_positive_float("Battery capacity (kWh): ")
+        max_charge_power_kw = cls._get_positive_float("Max charge power (kW): ")
+        max_discharge_power_kw = cls._get_positive_float("Max discharge power (kW): ")
 
-            while True:
-                soc_initial_kwh = cls._get_non_negative_float("Initial battery level (kWh): ")
-                if soc_initial_kwh <= capacity_kwh:
-                    break
-                print("Initial SOC cannot exceed battery capacity.")
+        while True:
+            efficiency = cls._get_positive_float("Battery efficiency (0-1): ")
+            if efficiency <= 1:
+                break
+            print("Efficiency must be less than or equal to 1.")
+
+        while True:
+            soc_initial_kwh = cls._get_non_negative_float("Initial battery level (kWh): ")
+            if soc_initial_kwh <= capacity_kwh:
+                break
+            print("Initial SOC cannot exceed battery capacity.")
 
         return cls(
             capacity_kwh,

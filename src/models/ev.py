@@ -85,7 +85,6 @@ class EV:
 
         charging_start = cls._get_time("Charging start time (HH:MM): ")
         charging_end = cls._get_time("Charging end time (HH:MM): ")
-
         capacity_kwh = cls._get_positive_float("Battery capacity (kWh): ")
         max_power_kw = cls._get_positive_float("Max charging power (kW): ")
 

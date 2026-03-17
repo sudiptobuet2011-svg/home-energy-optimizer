@@ -12,10 +12,10 @@ def get_ev_charging_hours(df, ev):
         filtered_df = df[(time_strings >= start_time) | (time_strings <= end_time)]
 
     ranked_hours = filtered_df.sort_values("price")
-    available_hour = ranked_hours.index.tolist()
+    available_hours = ranked_hours.index.tolist()
 
     charging_hours_needed = math.ceil(ev.energy_needed() / ev.max_power_kw)
-    selected_hours = available_hour[:charging_hours_needed]
+    selected_hours = available_hours[:charging_hours_needed]
     selected_prices = ranked_hours["price"].tolist()[:charging_hours_needed]
     cost = [(price / 1000) * ev.max_power_kw for price in selected_prices]
 
